@@ -9,6 +9,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.dilarakiraz.upschooltodoo.R
 import com.dilarakiraz.upschooltodoo.common.viewBinding
+import com.dilarakiraz.upschooltodoo.data.model.Note
 import com.dilarakiraz.upschooltodoo.data.source.Database
 import com.dilarakiraz.upschooltodoo.databinding.DialogAddNoteBinding
 import com.dilarakiraz.upschooltodoo.databinding.FragmentDailyNotesBinding
@@ -17,7 +18,9 @@ class DailyNotesFragment : Fragment(R.layout.fragment_daily_notes) {
 
     private val binding by viewBinding (FragmentDailyNotesBinding::bind)
 
-    private val dailyNotesAdapter =  DailyNotesAdapter(onNoteClick = ::onNoteClick)
+    private val dailyNotesAdapter =  DailyNotesAdapter(
+        onNoteClick = ::onNoteClick,
+        onDeleteClick = ::onDeleteNote)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -30,9 +33,16 @@ class DailyNotesFragment : Fragment(R.layout.fragment_daily_notes) {
                 showAddDialog()
             }
         }
+
     }
     private fun onNoteClick(desc: String) {
         Toast.makeText(requireContext(), desc, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun onDeleteNote(note: Note) {
+        // CheckBox'a tıklanınca notu silmek ve UI'ı güncellemek için bu işlevi kullanabilirsiniz.
+        Database.removeDailyNoteById(note.id)
+        dailyNotesAdapter.updateList(Database.getDailyNotes())
     }
 
 

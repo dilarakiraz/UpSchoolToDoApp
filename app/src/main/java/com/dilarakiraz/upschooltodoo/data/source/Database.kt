@@ -16,4 +16,11 @@ object Database {
         )
         dailyNotes.add(newNote)
     }
+    fun removeDailyNoteById(id: Int) {
+        val noteToRemove = dailyNotes.find { it.id == id }
+        if (noteToRemove != null) {
+            dailyNotes.remove(noteToRemove)
+        }
+    }
+
 }

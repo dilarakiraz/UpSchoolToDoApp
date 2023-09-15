@@ -4,17 +4,20 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.dilarakiraz.upschooltodoo.data.model.Note
+import com.dilarakiraz.upschooltodoo.data.source.Database
 import com.dilarakiraz.upschooltodoo.databinding.ItemDailyNoteBinding
 
 class DailyNotesAdapter(
-    private val onNoteClick: (String) -> Unit
+    private val onNoteClick: (String) -> Unit,
+    private val onDeleteClick: (Note) -> Unit
 ):RecyclerView.Adapter<DailyNotesAdapter.DailyNoteViewHolder>(){
 
     private val noteList = mutableListOf<Note>()
 
+
     override fun onCreateViewHolder(parent:ViewGroup,viewType:Int):DailyNoteViewHolder {
         val binding = ItemDailyNoteBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-        return DailyNoteViewHolder(binding,onNoteClick)
+        return DailyNoteViewHolder(binding,onNoteClick, onDeleteClick)
     }
 
     override fun onBindViewHolder(holder: DailyNoteViewHolder,position: Int){
@@ -23,7 +26,8 @@ class DailyNotesAdapter(
 
     class DailyNoteViewHolder(
         private val binding: ItemDailyNoteBinding,
-        private val onNoteClick: (String) -> Unit
+        private val onNoteClick: (String) -> Unit,
+        private val onDeleteClick: (Note) -> Unit
     ):RecyclerView.ViewHolder(binding.root){
         fun bind(note:Note){
             with(binding){
@@ -33,6 +37,19 @@ class DailyNotesAdapter(
                 root.setOnClickListener{
                     onNoteClick(note.description)
                 }
+
+                checkbox.isChecked = note.isChecked
+
+                checkbox.setOnCheckedChangeListener { _, isChecked ->
+                    note.isChecked = isChecked
+
+                    // CheckBox'a tıklanınca notu sil
+                    if (isChecked) {
+                        onDeleteClick(note)
+                    }
+                }
+
+
             }
         }
     }
@@ -44,6 +61,9 @@ class DailyNotesAdapter(
     fun updateList(list:List<Note>){
         noteList.clear()
         noteList.addAll(list)
-        notifyItemRangeChanged(0,list.size)
+        //notifyItemRangeChanged(0,list.size)
+        notifyDataSetChanged()
     }
+
+
 }
