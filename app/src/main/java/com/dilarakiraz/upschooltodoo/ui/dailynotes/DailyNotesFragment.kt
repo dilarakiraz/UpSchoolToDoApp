@@ -40,7 +40,7 @@ class DailyNotesFragment : Fragment(R.layout.fragment_daily_notes) {
     }
 
     private fun onDeleteNote(note: Note) {
-        // CheckBox'a tıklanınca notu silmek ve UI'ı güncellemek için bu işlevi kullanabilirsiniz.
+        // CheckBox'a tıklanınca notu silmek ve UI'ı güncellemek için
         Database.removeDailyNoteById(note.id)
         dailyNotesAdapter.updateList(Database.getDailyNotes())
     }
