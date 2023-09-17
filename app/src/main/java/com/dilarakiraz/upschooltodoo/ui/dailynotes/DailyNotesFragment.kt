@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import com.dilarakiraz.upschooltodoo.R
 import com.dilarakiraz.upschooltodoo.common.viewBinding
 import com.dilarakiraz.upschooltodoo.data.model.Note
+import com.dilarakiraz.upschooltodoo.data.model.Priority
 import com.dilarakiraz.upschooltodoo.data.source.Database
 import com.dilarakiraz.upschooltodoo.databinding.DialogAddNoteBinding
 import com.dilarakiraz.upschooltodoo.databinding.FragmentDailyNotesBinding
@@ -33,7 +34,6 @@ class DailyNotesFragment : Fragment(R.layout.fragment_daily_notes) {
                 showAddDialog()
             }
         }
-
     }
     private fun onNoteClick(desc: String) {
         Toast.makeText(requireContext(), desc, Toast.LENGTH_SHORT).show()
@@ -49,16 +49,33 @@ class DailyNotesFragment : Fragment(R.layout.fragment_daily_notes) {
     private fun showAddDialog(){
         val builder = AlertDialog.Builder(requireContext())
         val dialogBinding = DialogAddNoteBinding.inflate(layoutInflater)
+
+
+
         builder.setView(dialogBinding.root)
         val dialog = builder.create()
+
+
 
         with(dialogBinding){
             btnAddNote.setOnClickListener {
                 val title = etTitle.text.toString()
                 val desc = etDesc.text.toString()
+                var priorityColorResId = R.color.default_priority_color
+
+
+                // Seçilen öncelik rengini belirle
+                if (radioHigh.isChecked) {
+                    priorityColorResId = R.color.highPriorityColor
+                } else if (radioLow.isChecked) {
+                    priorityColorResId = R.color.lowPriorityColor
+                } else if (radioMedium.isChecked) {
+                    priorityColorResId = R.color.mediumPriorityColor
+                }
+
 
                 if (title.isNotEmpty() && desc.isNotEmpty()) {
-                    Database.addDailyNote(title, desc)
+                    Database.addDailyNote(title, desc , priorityColorResId)
                     dailyNotesAdapter.updateList(Database.getDailyNotes())
                     dialog.dismiss()
                 } else {
