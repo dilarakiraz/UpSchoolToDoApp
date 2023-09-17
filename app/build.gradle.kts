@@ -51,4 +51,6 @@ dependencies {
 
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.2")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.2")
+
+    implementation ("androidx.cardview:cardview:1.0.0")
 }

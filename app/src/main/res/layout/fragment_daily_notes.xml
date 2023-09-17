@@ -5,20 +5,32 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.dailynotes.DailyNotesFragment">
-
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/etSearch"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/daily_card"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:inputType="text"
-        android:hint="Search"
+        app:cardCornerRadius="50dp"
+        app:cardBackgroundColor="#E7CCEC"
         app:layout_constraintBottom_toTopOf="@+id/rv_daily_notes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toTopOf="parent">
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/etSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:inputType="text"
+                app:searchIcon="@drawable/ic_search"
+                app:queryHint="Search"
+                app:layout_constraintBottom_toTopOf="@+id/rv_daily_notes"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+    </androidx.cardview.widget.CardView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_daily_notes"
@@ -31,7 +43,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etSearch"
+        app:layout_constraintTop_toBottomOf="@+id/daily_card"
         tools:itemCount="3"
         tools:listitem="@layout/item_daily_note" />
 

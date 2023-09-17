@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import com.dilarakiraz.upschooltodoo.R
 import com.dilarakiraz.upschooltodoo.common.viewBinding
@@ -33,6 +34,26 @@ class DailyNotesFragment : Fragment(R.layout.fragment_daily_notes) {
             fabAdd.setOnClickListener {
                 showAddDialog()
             }
+
+            // SearchView'a tıklanınca
+            etSearch.setOnClickListener {
+                // Arama yapılacak metni temizle
+                etSearch.setQuery("", false)
+            }
+            // SearchView'da metin değiştiğinde
+            etSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    return true
+                }
+
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    // Metin değiştikçe arama yap
+                    val queryText = newText?.trim() ?: ""
+                    val filteredNotes = Database.getDailyNotes().filter { it.title.contains(queryText, ignoreCase = true) }
+                    dailyNotesAdapter.updateList(filteredNotes)
+                    return true
+                }
+            })
         }
     }
     private fun onNoteClick(desc: String) {
@@ -50,11 +71,8 @@ class DailyNotesFragment : Fragment(R.layout.fragment_daily_notes) {
         val builder = AlertDialog.Builder(requireContext())
         val dialogBinding = DialogAddNoteBinding.inflate(layoutInflater)
 
-
-
         builder.setView(dialogBinding.root)
         val dialog = builder.create()
-
 
 
         with(dialogBinding){
