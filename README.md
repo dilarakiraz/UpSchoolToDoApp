@@ -14,9 +14,9 @@ Low → Yeşil
 Medium → Mavi
 High → Kırmızı
 
-<img src="https://github.com/dilarakiraz/UpSchoolToDoApp/assets/76565172/6d211496-15af-4c70-9ff9-2bca1aa83300" width="200" height="350">
-<img src="https://github.com/dilarakiraz/UpSchoolToDoApp/assets/76565172/f76a5e62-2d91-49c4-8284-5ebe1092eede" width="200" height="350">
-<img src="https://github.com/dilarakiraz/UpSchoolToDoApp/assets/76565172/2ac4e4a7-1b21-4651-a5f2-3c63572c329c" width="200" height="350">
-<img src="https://github.com/dilarakiraz/UpSchoolToDoApp/assets/76565172/a1dc953b-94cf-4d15-bc34-712a529ea675" width="200" height="350">
-<img src="https://github.com/dilarakiraz/UpSchoolToDoApp/assets/76565172/0ec0b5a1-57ea-451f-b0f6-d9391ad6b09c" width="200" height="350">
-<img src="https://github.com/dilarakiraz/UpSchoolToDoApp/assets/76565172/0d71605a-f876-4e6d-ada1-1207777aa46f" width="200" height="350">
+![Ekran Görüntüsü (17)](https://github.com/dilarakiraz/UpSchoolToDoApp/assets/76565172/a9dc5d68-d3ef-4cb2-b446-978e004d94f7)
+![Ekran Görüntüsü (18)](https://github.com/dilarakiraz/UpSchoolToDoApp/assets/76565172/f41751d9-8b58-4d30-91b4-105b88559ee7)
+![Ekran Görüntüsü (19)](https://github.com/dilarakiraz/UpSchoolToDoApp/assets/76565172/871cc683-3f70-4569-a2bc-02a4e6ac4db7)
+![Ekran Görüntüsü (20)](https://github.com/dilarakiraz/UpSchoolToDoApp/assets/76565172/c10d0d91-fe9d-4b2b-ab4d-47f13c0e1a94)
+![Ekran Görüntüsü (21)](https://github.com/dilarakiraz/UpSchoolToDoApp/assets/76565172/8d49c8fc-1382-416f-b96a-7604699ddc7e)
+![Ekran Görüntüsü (22)](https://github.com/dilarakiraz/UpSchoolToDoApp/assets/76565172/e5bd6480-fd33-4c9a-8a48-d60043c9834d)
